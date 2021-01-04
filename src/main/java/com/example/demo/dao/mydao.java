@@ -6,5 +6,9 @@ import java.util.List;
 
 @Mapper
 public interface mydao {
-    List<User> findAllUser();
+    public List<User> findAllUser();
+    public User findUserById(int id);
+    public boolean updateUserById(User user);
+    public boolean insertUser(User user);
+    public boolean deleteById(int id);
 }

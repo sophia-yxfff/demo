@@ -11,7 +11,29 @@ public class myServiceImpl implements myservice {
     @Autowired
     mydao dao;
     @Override
-    public List<User> getAllUser() {
+    public List<User> getUsers() {
+
         return dao.findAllUser();
+    }
+
+    @Override
+    public User findUserById(int id) {
+        return dao.findUserById(id);
+    }
+    @Override
+    public boolean updateUserById(User user) {
+        dao.updateUserById(user);
+        return true;
+    }
+    @Override
+    public boolean insertUser(User user){
+        dao.insertUser(user);
+        return true;
+    }
+
+    @Override
+    public boolean deleteById(int id) {
+        dao.deleteById(id);
+        return true;
     }
 }

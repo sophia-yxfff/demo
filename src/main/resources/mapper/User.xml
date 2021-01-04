@@ -2,9 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.dao.mydao">
+	<sql id="base_column_list">
+		id,name,age,email
+	</sql>
 	<select id="findAllUser" resultType="com.example.demo.model.User" >
 		select id,name,age,email from user
 	</select>
+	<select id="findUserById" resultType="com.example.demo.model.User">
+		select
+		<include refid="base_column_list"></include>
+		from user
+		where id = #{id}
+	</select>
+	<update id="updateUserById" parameterType="com.example.demo.model.User">
+		update user set name = #{name}, age = #{age}, email = #{email} where id = #{id}
+	</update>
+	<insert id="insertUser" parameterType="com.example.demo.model.User">
+		insert into user values (#{id},#{name},#{age},#{email})
+	</insert>
+	<delete id="deleteById" parameterType="java.lang.Integer">
+		delete from user where id = #{id}
+	</delete>
+
 </mapper>
 
 
